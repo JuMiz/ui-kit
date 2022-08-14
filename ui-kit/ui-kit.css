@@ -1,0 +1,298 @@
+:root {
+    --roboto-font: "Roboto";
+
+    /* main palette colors */
+    --dark-blue-color: rgb(2, 79, 109);
+    --sea-green-disabled-color: rgb(0, 204, 163);
+    --sea-green-border-color: rgb(51, 185, 158);
+    --sea-green-lighter-color: rgb(137, 215, 200);
+    --sea-green-color: rgb(0, 167, 134);
+    --sea-green-darker-color: rgb(0, 128, 102);
+    --dark-purple-color: rgb(67, 40, 59);
+    /* */
+
+    --light-grey: #eeeeee;
+    --dark-grey-color: rgb(93, 93, 93);
+
+    --grey-border-color: rgb(204, 204, 204);
+
+    --white-color: rgb(255, 255, 255);
+
+    --error-color: rgb(221, 89, 89);
+    --success-color: var(--sea-green-color);
+
+    --disabled-bg-color: rgb(230, 230, 230);
+}
+
+body {
+    margin: 0;
+    font-family: Roboto;
+}
+
+.kit-header {
+    background-color: var(--light-grey);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.kit-header h1 {
+    color: var(--dark-grey-color);
+    font-size: 26px;
+    font-family: "Bariol", var(--roboto-font);
+    font-weight: 400;
+    text-align: left;
+    margin: 0;
+}
+
+.three-columns h1{
+    flex: 0 0 33.333333%;
+}
+
+.three-columns div{
+    flex: 0 0 33.333333%;
+}
+
+.three-columns div ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.kit-demo-block {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7px;
+}
+
+.kit-demo-block-footer {
+    background-color: var(--light-grey);
+}
+
+.kit-header, .kit-demo-block-footer {
+    height: 60px;
+}
+
+.items-container {
+    display: flex;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.items-container.three-columns {
+    gap: unset;
+}
+
+/*Button*/
+.primary-btn {
+    margin: 10px;
+    cursor: pointer;
+    min-width: 210px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white-color);
+    background-color: var(--sea-green-color);
+    font-size: 16px;
+    font-family: "ProximaNova", var(--roboto-font);
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0 3px var(--sea-green-darker-color);
+}
+
+.primary-btn:hover {
+    color: var(--dark-blue-color);
+}
+
+.primary-btn:active {
+    color: var(--white-color);
+    background-color: var(--dark-purple-color);
+    box-shadow: unset;
+}
+
+.primary-btn:disabled {
+    color: var(--sea-green-disabled-color);
+    pointer-events: none;
+    box-shadow: unset;
+}
+/**/
+
+/*Menu*/
+.menu {
+    cursor: pointer;
+    background-color: var(--sea-green-color);
+    display: flex;
+    list-style-type: none;
+    color: var(--sea-green-lighter-color);
+    padding: 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 0 3px var(--sea-green-darker-color);
+}
+
+.menu li {
+    padding: 20px 25px;
+    position:relative;
+}
+
+.menu li:not(:last-child):after {
+    content:"";
+    position:absolute;
+    top:10%;
+    right:0;
+    width:2px;
+    height:80%;
+    background: var(--sea-green-border-color);
+}
+
+.menu_item_selected {
+    position: relative;
+}
+.menu_item_selected:before {
+    content:'';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid var(--sea-green-darker-color);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+/* */
+
+/* Input */
+.kit-input {
+    border-radius: 3px;
+    border-style: solid;
+    border-color: var(--grey-border-color);
+    padding: 10px;
+    text-indent: 5px;
+}
+
+.kit-input:active {
+    border-color: var(--dark-grey-color);
+}
+
+.kit-input::placeholder {
+    color: var(--grey-border-color);
+}
+
+.kit-input.error {
+    border-color: var(--error-color);
+}
+
+.kit-input.error::placeholder {
+    color: var(--error-color);
+}
+
+.kit-input.success {
+    border-color: var(--sea-green-color);
+}
+
+.kit-input.success::placeholder {
+    color: var(--sea-green-color);
+}
+
+.kit-input:disabled {
+    pointer-events: none;
+    background-color: var(--disabled-bg-color);
+}
+/* */
+
+/*Checkboxes*/
+
+/* Checkbox container */
+.checkbox-container {
+    color: var(--dark-grey-color);
+    padding-top: 4px;
+    display: block;
+    position: relative;
+    padding-left: 42px;
+    margin-bottom: 22px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+.checkmark:disabled {
+    pointer-events: none;
+}
+
+.checkbox-container input:disabled ~ .checkmark {
+    border-color: var(--grey-border-color);
+    cursor: default;
+}
+
+.checkbox-container:has(input, :disabled) {
+    cursor: unset;
+    color: red;
+}
+
+/* On mouse-over, add a success color border */
+.checkbox-container:hover input:not([disabled]) ~ .checkmark {
+    border-color: var(--success-color);
+}
+
+/* When the checkbox is checked, add a success color border */
+.checkbox-container input:not([disabled]):checked ~ .checkmark {
+    border-color: var(--success-color);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--success-color);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:disabled ~ .checkmark:after {
+    border-color: var(--grey-border-color);
+}
+/* */
