@@ -6,6 +6,14 @@
     <link href="ui-kit.css" rel="stylesheet">
 </head>
 <body>
+    <header class="main-header">
+        <h1>UI KIT</h1>
+        <div class="color-palette-container">
+            <span class="color-palette purple"></span>
+            <span class="color-palette blue"></span>
+            <span class="color-palette green"></span>
+        </div>
+    </header>
     <section class="kit-demo-block">
         <header class="kit-header">
             <h1>Buttons</h1>
@@ -88,7 +96,7 @@
         </header>
 
         <div class="items-container three-columns">
-            <div>
+            <div class="checkboxes">
                 <label class="checkbox-container">unchecked
                     <input type="checkbox">
                     <span class="checkmark"></span>
@@ -106,24 +114,32 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <div>
-                <ul>
-                    <li>unchecked</li>
-                    <li>hover</li>
-                    <li>checked</li>
-                </ul>
+            <div class="radio-buttons">
+                <label class="radio-button-container">unchecked
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-button-container">checked
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-button-container">disabled unchecked
+                    <input type="radio" name="radio" disabled>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-button-container">disabled checked
+                    <input type="radio" name="radio" checked="checked" disabled>
+                    <span class="checkmark"></span>
+                </label>
             </div>
             <div>
-                <ul>
-                    <li>unchecked</li>
-                    <li>hover</li>
-                    <li>checked</li>
-                </ul>
+                <button class="tag">Tag text</button>
+                <button class="tag tag-delete">Tag Delete</button>
+                <button class="tag tag-add">Tag Add</button>
             </div>
         </div>
 
         <footer class="kit-demo-block-footer">
-
         </footer>
     </section>
 </body>

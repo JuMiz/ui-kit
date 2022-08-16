@@ -3,15 +3,16 @@
 
     /* main palette colors */
     --dark-blue-color: rgb(2, 79, 109);
-    --sea-green-disabled-color: rgb(0, 204, 163);
-    --sea-green-border-color: rgb(51, 185, 158);
-    --sea-green-lighter-color: rgb(137, 215, 200);
-    --sea-green-color: rgb(0, 167, 134);
-    --sea-green-darker-color: rgb(0, 128, 102);
     --dark-purple-color: rgb(67, 40, 59);
+    --sea-green-color: rgb(0, 167, 134);
     /* */
 
-    --light-grey: #eeeeee;
+    --sea-green-lighter-color: rgb(137, 215, 200);
+    --sea-green-darker-color: rgb(0, 128, 102);
+    --sea-green-disabled-color: rgb(0, 204, 163);
+    --sea-green-border-color: rgb(51, 185, 158);
+
+    --light-grey: rgb(238, 238, 238);
     --dark-grey-color: rgb(93, 93, 93);
 
     --grey-border-color: rgb(204, 204, 204);
@@ -27,6 +28,38 @@
 body {
     margin: 0;
     font-family: Roboto;
+}
+
+.main-header {
+    background-color: var(--light-grey);
+    color: var(--dark-grey-color);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.color-palette-container {
+    display: flex;
+}
+
+.color-palette {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.purple {
+    background-color: var(--dark-purple-color);
+}
+
+.blue {
+    background-color: var(--dark-blue-color);
+}
+
+.green {
+    background-color: var(--sea-green-color);
 }
 
 .kit-header {
@@ -85,7 +118,7 @@ body {
 
 /*Button*/
 .primary-btn {
-    margin: 10px;
+    /*margin: 10px;*/
     cursor: pointer;
     min-width: 210px;
     height: 50px;
@@ -99,16 +132,24 @@ body {
     text-transform: uppercase;
     text-align: center;
     box-shadow: 0 3px var(--sea-green-darker-color);
+    /*transition: all 0.3s;*/
+
+    transition: box-shadow 0.2s ease-in-out, margin-top 0.2s ease-in-out;
+
+    padding: 5px;
 }
 
-.primary-btn:hover {
+.primary-btn:hover,
+.button:focus {
     color: var(--dark-blue-color);
+    outline: 0;
 }
 
 .primary-btn:active {
     color: var(--white-color);
     background-color: var(--dark-purple-color);
     box-shadow: unset;
+    margin-top: 3px;
 }
 
 .primary-btn:disabled {
@@ -134,6 +175,8 @@ body {
 .menu li {
     padding: 20px 25px;
     position:relative;
+
+    transition: 0.2s;
 }
 
 .menu li:not(:last-child):after {
@@ -146,10 +189,10 @@ body {
     background: var(--sea-green-border-color);
 }
 
-.menu_item_selected {
+.menu li {
     position: relative;
 }
-.menu_item_selected:before {
+.menu li:hover:before {
     content:'';
     position: absolute;
     left: 0;
@@ -161,6 +204,8 @@ body {
     border-bottom: 8px solid var(--sea-green-darker-color);
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
+
+    transition: 0.8s;
 }
 /* */
 
@@ -238,8 +283,8 @@ body {
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
-    border: 2px solid grey;
+    background-color: var(--light-grey);
+    border: 2px solid var(--dark-grey-color);
     border-radius: 5px;
 }
 
@@ -254,7 +299,6 @@ body {
 
 .checkbox-container:has(input, :disabled) {
     cursor: unset;
-    color: red;
 }
 
 /* On mouse-over, add a success color border */
@@ -295,4 +339,117 @@ body {
 .checkbox-container input:disabled ~ .checkmark:after {
     border-color: var(--grey-border-color);
 }
+/* */
+
+/* Radio Buttons */
+.radio-button-container {
+    color: var(--dark-grey-color);
+    text-transform: uppercase;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+    padding-top: 4px;
+    padding-left: 42px;
+    margin-bottom: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-button-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.radio-button-container .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--light-grey);
+    border-radius: 50%;
+}
+
+.checkmark:disabled {
+    pointer-events: none;
+}
+
+.radio-button-container input:disabled ~ .checkmark {
+    border-color: var(--grey-border-color);
+    cursor: default;
+}
+
+.radio-button-container:has(input, :disabled) {
+    cursor: unset;
+}
+
+/* On mouse-over, add a green border color */
+.radio-button-container:hover input:not([disabled]) ~ .checkmark {
+    border-color: var(--success-color);
+}
+
+/* When the radio button is checked, add a green border */
+.radio-button-container input:not([disabled]):checked ~ .checkmark {
+    border-color: var(--success-color);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio-button-container .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-button-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-button-container .checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--success-color);
+}
+
+.radio-button-container input:disabled ~ .checkmark:after {
+    background: var(--grey-border-color);
+}
+
+/* */
+
+/* Tag */
+.tag {
+    text-align: start;
+    padding-left: 20px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    min-width: 210px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white-color);
+    background-color: var(--sea-green-color);
+    font-size: 16px;
+    font-family: var(--roboto-font);
+    font-weight: 600;
+}
+
+.tag-delete {
+    background-color: var(--error-color);
+}
+
+.tag-add {
+    background-color: var(--grey-border-color);
+}
+
 /* */
