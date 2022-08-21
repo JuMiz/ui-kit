@@ -30,6 +30,15 @@ body {
     font-family: Roboto;
 }
 
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 .main-header {
     background-color: var(--light-grey);
     color: var(--dark-grey-color);
@@ -118,7 +127,6 @@ body {
 
 /*Button*/
 .primary-btn {
-    /*margin: 10px;*/
     cursor: pointer;
     min-width: 210px;
     height: 50px;
@@ -132,10 +140,7 @@ body {
     text-transform: uppercase;
     text-align: center;
     box-shadow: 0 3px var(--sea-green-darker-color);
-    /*transition: all 0.3s;*/
-
-    transition: box-shadow 0.2s ease-in-out, margin-top 0.2s ease-in-out;
-
+    transition: all 0.3s ease-in-out;
     padding: 5px;
 }
 
@@ -149,7 +154,6 @@ body {
     color: var(--white-color);
     background-color: var(--dark-purple-color);
     box-shadow: unset;
-    margin-top: 3px;
 }
 
 .primary-btn:disabled {
@@ -174,18 +178,18 @@ body {
 
 .menu li {
     padding: 20px 25px;
-    position:relative;
+    position: relative;
 
-    transition: 0.2s;
+    transition: 0.8s;
 }
 
 .menu li:not(:last-child):after {
-    content:"";
-    position:absolute;
-    top:10%;
-    right:0;
-    width:2px;
-    height:80%;
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 2px;
+    height: 80%;
     background: var(--sea-green-border-color);
 }
 
@@ -204,12 +208,47 @@ body {
     border-bottom: 8px solid var(--sea-green-darker-color);
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
+}
 
-    transition: 0.8s;
+.menu a:active {
+    color: var(--white-color);
+}
+
+.menu li a {
+    position: relative;
+}
+
+.menu .menu_item_notification a:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--sea-green-lighter-color);
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
 }
 /* */
 
 /* Input */
+.kit-input-container {
+    position: relative;
+}
+
+.kit-input-container label {
+    display: none;
+}
+
+.kit-input-container i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
+
 .kit-input {
     border-radius: 3px;
     border-style: solid;
@@ -226,16 +265,18 @@ body {
     color: var(--grey-border-color);
 }
 
-.kit-input.error {
+.error {
     border-color: var(--error-color);
+    color: var(--error-color);
 }
 
 .kit-input.error::placeholder {
     color: var(--error-color);
 }
 
-.kit-input.success {
+.success {
     border-color: var(--sea-green-color);
+    color: var(--sea-green-color);
 }
 
 .kit-input.success::placeholder {
@@ -246,7 +287,94 @@ body {
     pointer-events: none;
     background-color: var(--disabled-bg-color);
 }
+
+/* Wiggle animation for errors */
+.wiggle {
+    animation: wiggle 2s linear infinite;
+}
+
+.wiggle:focus-within {
+    animation: none;
+}
+
+/* Keyframes */
+@keyframes wiggle {
+    0%, 7% {
+        transform: rotateZ(0);
+    }
+    15% {
+        transform: rotateZ(-15deg);
+    }
+    20% {
+        transform: rotateZ(10deg);
+    }
+    25% {
+        transform: rotateZ(-10deg);
+    }
+    30% {
+        transform: rotateZ(6deg);
+    }
+    35% {
+        transform: rotateZ(-4deg);
+    }
+    40%, 100% {
+        transform: rotateZ(0);
+    }
+}
+
 /* */
+
+/* Icons */
+
+/* infinite rotation */
+.fa-infinite-spin-hover:hover {
+    animation: fa-infinite-spin 2s infinite linear;
+}
+
+@keyframes fa-infinite-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}
+
+/* single spin */
+.fa-single-spin-hover:hover{
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+/* infinite fast spin */
+.fa-infinite-spin {
+    animation-name: infinite-spin;
+    animation-duration: 10000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes infinite-spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+/* */
+
 
 /*Checkboxes*/
 
@@ -429,6 +557,7 @@ body {
 
 /* Tag */
 .tag {
+    position: relative;
     text-align: start;
     padding-left: 20px;
     text-transform: capitalize;
@@ -444,12 +573,27 @@ body {
     font-weight: 600;
 }
 
+.tag i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+}
+
 .tag-delete {
     background-color: var(--error-color);
 }
 
 .tag-add {
     background-color: var(--grey-border-color);
+}
+
+.tag-add:hover .grow-on-hover {
+    font-size: 2em;
+}
+
+.grow-on-hover {
+    transition: font-size 0.3s ease;
 }
 
 /* */

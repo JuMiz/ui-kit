@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>UI Kit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="ui-kit.css" rel="stylesheet">
 </head>
 <body>
@@ -36,13 +37,27 @@
 
         <div class="items-container">
             <ul class="menu">
-                <li>Overview</li>
-                <li class="menu_item_selected">Metric</li>
-                <li class="menu_item_notification">Chart</li>
-                <li>Targeting</li>
-                <li>Creatives</li>
-                <li>Budget</li>
-                <li>Settings</li>
+                <li>
+                    <a href='#overview' id='overview' class='menu-link'>Overview</a>
+                </li>
+                <li class="menu_item_selected">
+                    <a href='#metric' id='metric' class='menu-link'>Metric</a>
+                </li>
+                <li class="menu_item_notification">
+                    <a href='#chart' id='chart' class='menu-link'>Chart</a>
+                </li>
+                <li>
+                    <a href='#targeting' id='targeting' class='menu-link'>Targeting</a>
+                </li>
+                <li>
+                    <a href='#creatives' id='creatives' class='menu-link'>Creatives</a>
+                </li>
+                <li>
+                    <a href='#budget' id='budget' class='menu-link'>Budget</a>
+                </li>
+                <li>
+                    <a href='#settings' id='settings' class='menu-link'>Settings</a>
+                </li>
             </ul>
         </div>
 
@@ -57,13 +72,39 @@
         </header>
 
         <div class="items-container">
-            <input placeholder="Inactive" class="kit-input" />
+            <div class="kit-input-container">
+                <label for="inactive">Inactive</label>
+                <input
+                        type="text"
+                        placeholder="Inactive"
+                        name="inactive"
+                        id="inactive"
+                        class="kit-input" />
+            </div>
 
-            <input placeholder="Error" class="kit-input error" />
+            <div class="kit-input-container wiggle">
+                <label for="error">Error</label>
+                <input
+                        type="text"
+                        id="error"
+                        name="error"
+                        placeholder="Error"
+                        class="kit-input error" />
+                <i class="fa fa-minus-circle fa-lg error"></i>
+            </div>
 
-            <input placeholder="Success" class="kit-input success" />
+            <div class="kit-input-container">
+                <label for="success">Success</label>
+                <input
+                        type="text"
+                        placeholder="Success"
+                        name="success"
+                        id="success"
+                        class="kit-input success" />
+                <i class="fa  fa-check-circle fa-lg success"></i>
+            </div>
 
-            <input placeholder="Deactive" class="kit-input" disabled />
+            <input placeholder="Deactive" type="text" class="kit-input" disabled />
         </div>
 
         <footer class="kit-demo-block-footer">
@@ -77,10 +118,16 @@
         </header>
 
         <div class="items-container">
-            <div class="primary-icon_error"></div>
-            <div class="primary-icon_ok"></div>
+            <div class="primary-icon_error">
+                <i class="fa fa-minus-circle fa-lg error fa-infinite-spin-hover"></i>
+            </div>
+            <div class="primary-icon_ok">
+                <i class="fa  fa-check-circle fa-lg success fa-single-spin-hover"></i>
+            </div>
             <div class="primary-icon_info"></div>
-            <div class="primary-icon_budget"></div>
+            <div class="primary-icon_budget">
+                <i class="fa fa-dollar fa-lg fa-infinite-spin"></i>
+            </div>
         </div>
 
         <footer class="kit-demo-block-footer">
@@ -97,6 +144,10 @@
 
         <div class="items-container three-columns">
             <div class="checkboxes">
+<!--                TODO Pay attention
+ <label for="username">Username</label>
+<input type="text" id="username" name="username" />
+ -->
                 <label class="checkbox-container">unchecked
                     <input type="checkbox">
                     <span class="checkmark"></span>
@@ -134,8 +185,14 @@
             </div>
             <div>
                 <button class="tag">Tag text</button>
-                <button class="tag tag-delete">Tag Delete</button>
-                <button class="tag tag-add">Tag Add</button>
+                <button class="tag tag-delete">
+                    Tag Delete
+                    <i class="fa fa-remove fa-lg"></i>
+                </button>
+                <button class="tag tag-add">
+                    Tag Add
+                    <i class="fa fa-plus fa-lg grow-on-hover"></i>
+                </button>
             </div>
         </div>
 
